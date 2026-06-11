@@ -3,3 +3,5 @@ __pycache__/
 .env
 .vscode/
 agent.workflow.py
+lg_env/
+.venv/
