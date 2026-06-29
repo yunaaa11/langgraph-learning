@@ -35,15 +35,16 @@ def print_stream(stream):
             print(message)
         else:
             message.pretty_print()
-# config={"configurable":{"thread_id":"1"}}
-# inputs={"messages":[("user","what is the weather in beijing?")]}
-# print_stream(graph.stream(inputs,config=config,stream_mode="values"))
-config={"configurable":{"thread_id":"2"}}
-inputs={"messages":[("user","what is it known for?")]}
+config={"configurable":{"thread_id":"1"}}
+inputs={"messages":[("user","what is the weather in beijing?")]}
 print_stream(graph.stream(inputs,config=config,stream_mode="values"))
+# config={"configurable":{"thread_id":"2"}}
+# inputs={"messages":[("user","what is it known for?")]}
+# print_stream(graph.stream(inputs,config=config,stream_mode="values"))
 #获取图的状态快照
 snapshot=graph.get_state(config)
 print("Next step: ",snapshot.next)
+#graph.stream(None) 传入 None 作为输入，表示“继续执行之前中断的图”。
 print_stream(graph.stream(None,config=config,stream_mode="values"))
 graph_png=graph.get_graph().draw_mermaid_png()
 with open("react_case.png","wb") as f:
